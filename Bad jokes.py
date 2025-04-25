@@ -1,29 +1,52 @@
 import flet as ft
-
-
-POLAR_MORSECODE = {'P': 'C', 'C': 'P', 'O': 'E', 'E': 'O', 'L': 'N', 'N': 'L', 
-                   'A': 'I', 'I': 'A', 'R': 'T', 'T': 'R'}
+import random
 
 def main(page: ft.Page):
-    page.title = "Guess that word!"
-    page.window_width = 300
-    page.window_height = 300
+    page.title = "Bad jokes hahaha"
 
-    text_visual = ft.TextField(label="Enter text", expand=True)
-    result = ft.TextField(label="Result", expand=True)
+    jokes = [
+        "Why do monkeys share amazon prime accounts? Prime mates.",
+        "why did the chicken cross the road?, to get to the other side.",
+        "Why are the stairs so evil?, they are always up to something.",
+        "Whats lebron james favirote salon?, The bronze Jade.",
+        "What did the taco said to the other taco, tacomo un poco raro tu (i dont know how to put this joke in english and it does well in spanish)",
+        "I would tell you a construction pun… but I’m still working on it.",
+        "Why are vampires so sick, Because they are always Coffin",
+        "What does a baby computer call its father? Data",
+        "Which knight invented King Arthur's Round Table? Sir Cumference",
+        "How can you find Will Smith in the snow? Follow the fresh prints"
+    ]
 
-    def encrypt_button_click(e):
-    
-        result = ''
-        result.value = result
+#i took some of the jokes from here: https://parade.com/998354/jessicasager/bad-jokes/, some i made up myself from memes ty
+
+    joke_text = ft.Text()
+
+    def show_joke(e):
+        joke_text.value = random.choice(jokes)
+        sheet.open = True
         page.update()
 
-    def copy_to_clipboard(e):
-        page.set_clipboard(result.value)
+    def close_joke(e):
+        sheet.open = False
         page.update()
 
-    button_encrypt = ft.ElevatedButton("Encrypt", on_click=encrypt_button_click)
-    button_copy = ft.ElevatedButton("Copy", on_click=copy_to_clipboard)
+    sheet = ft.BottomSheet(
+        content=ft.Container(
+            content=ft.Column([
+                ft.Text("Here's a joke:"),
+                joke_text,
+                ft.ElevatedButton("Close", on_click=close_joke)
+            ]),
+            jokes_ui=20,
+        ),
+        open=False
+    )
 
+    joke_button = ft.ElevatedButton("Tell me a joke", on_click=show_joke)
+
+    page.add(joke_button)
+    page.overlay.append(sheet)
 
 ft.app(target=main)
+
+#(i really wanted to put in the whole shrek 3 script but failed and got a 1k errors and it wont apply to the freaking comment, yes it was funny for no reason)
