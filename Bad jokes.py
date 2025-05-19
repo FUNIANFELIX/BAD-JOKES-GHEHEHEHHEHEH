@@ -2,22 +2,21 @@ import flet as ft
 import random
 
 def main(page: ft.Page):
-    page.title = "Bad jokes hahaha"
+    page.title = "Bad Jokes Hahaha"
+    page.padding = 20
 
     jokes = [
-        "Why do monkeys share amazon prime accounts? Prime mates.",
-        "why did the chicken cross the road?, to get to the other side.",
-        "Why are the stairs so evil?, they are always up to something.",
-        "Whats lebron james favirote salon?, The bronze Jade.",
-        "What did the taco said to the other taco, tacomo un poco raro tu (i dont know how to put this joke in english and it does well in spanish)",
+        "Why do monkeys share Amazon Prime accounts? Prime mates.",
+        "Why did the chicken cross the road? To get to the other side.",
+        "Why are the stairs so evil? They are always up to something.",
+        "What's LeBron James' favorite salon? The Bronze Jade.",
+        "¿Qué le dijo un taco al otro taco? Tacomo un poco raro tú.",
         "I would tell you a construction pun… but I’m still working on it.",
-        "Why are vampires so sick, Because they are always Coffin",
-        "What does a baby computer call its father? Data",
-        "Which knight invented King Arthur's Round Table? Sir Cumference",
-        "How can you find Will Smith in the snow? Follow the fresh prints"
+        "Why are vampires so sick? Because they are always coffin.",
+        "What does a baby computer call its father? Data.",
+        "Which knight invented King Arthur's Round Table? Sir Cumference.",
+        "How can you find Will Smith in the snow? Follow the fresh prints."
     ]
-
-#i took some of the jokes from here: https://parade.com/998354/jessicasager/bad-jokes/, some i made up myself from memes ty
 
     joke_text = ft.Text()
 
@@ -37,7 +36,7 @@ def main(page: ft.Page):
                 joke_text,
                 ft.ElevatedButton("Close", on_click=close_joke)
             ]),
-            jokes_ui=20,
+            padding=20
         ),
         open=False
     )
@@ -48,5 +47,6 @@ def main(page: ft.Page):
     page.overlay.append(sheet)
 
 ft.app(target=main)
-
 #(i really wanted to put in the whole shrek 3 script but failed and got a 1k errors and it wont apply to the freaking comment, yes it was funny for no reason)
+#padding link on flet i forgo to put in https://flet.dev/docs/reference/types/padding/ how i learn to use padding a bit more
+
